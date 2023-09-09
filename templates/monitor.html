@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monitor</title>
+</head>
+<body>
+    <h1>Monitor</h1>
+    
+    <h2>Page Metrics</h2>
+    <table>
+        <tr>
+            <th>Page Name</th>
+            <th>Time of Visit</th>
+        </tr>
+        {% for visit in page_visits %}
+        <tr>
+            <td>{{ visit.Pagename }}</td>
+            <td>{{ visit.Time_of_Visit }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <h2>Emotion Classifier Metrics</h2>
+    <!-- Add code to display emotion classifier metrics here -->
+    
+    <a href="/">Go back to home</a>
+</body>
+</html>
