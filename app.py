@@ -6,14 +6,12 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-# Load your model
 pipe_lr = joblib.load(open("pickle_data.pkl", "rb"))
 
 def predict_emotions(docx):
     results = pipe_lr.predict([docx])
     return results[0], np.max(pipe_lr.predict_proba([docx]))
 
-# Define your route for the home page
 @app.route("/", methods=["GET", "POST"])
 def home():
     if request.method == "POST":
@@ -22,11 +20,9 @@ def home():
         return render_template("result.html", raw_text=raw_text, prediction=prediction, confidence=confidence)
     return render_template("home.html")
 
-# Define your route for the monitor page
 @app.route("/monitor")
 def monitor():
-    # Implement your monitoring logic here
-    # Example data for page_visits (replace with your actual monitoring data)
+    
     page_visits = [
         {"Pagename": "Home", "Time_of_Visit": "2023-09-05 12:00:00"},
         {"Pagename": "Home", "Time_of_Visit": "2023-09-05 12:15:00"},
